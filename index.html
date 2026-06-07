@@ -32,17 +32,17 @@
       </div>
     </article>
 
-    <!-- 과제 4 (정적) -->
+    <!-- 과제 4 (동적) -->
     <article class="cell">
-      <div class="cell-tag">과제 4 · 정적</div>
+      <div class="cell-tag">과제 4 · 동적</div>
       <div class="frame">
         <iframe src="sample4/index.html" title="과제 4"></iframe>
       </div>
     </article>
 
-    <!-- 과제 2 (동적) -->
+    <!-- 과제 2 (정적) -->
     <article class="cell">
-      <div class="cell-tag">과제 2 · 동적</div>
+      <div class="cell-tag">과제 2 · 정적</div>
       <div class="frame">
         <iframe src="sample2/index.html" title="과제 2"></iframe>
       </div>
@@ -60,5 +60,22 @@
   <footer class="site-footer">
     <p>made with 🍕 &amp; p5.js</p>
   </footer>
+
+  <script>
+    // 각 iframe 안의 600x400 p5 캔버스를 프레임 폭에 맞게 비율 유지하며 축소
+    function fitFrames() {
+      document.querySelectorAll('.frame').forEach(function (frame) {
+        var iframe = frame.querySelector('iframe');
+        if (!iframe) return;
+        var scale = frame.clientWidth / 600; // 캔버스 원본 폭 600 기준
+        iframe.style.width = '600px';
+        iframe.style.height = '400px';
+        iframe.style.transformOrigin = 'top left';
+        iframe.style.transform = 'scale(' + scale + ')';
+      });
+    }
+    window.addEventListener('load', fitFrames);
+    window.addEventListener('resize', fitFrames);
+  </script>
 </body>
 </html>
